@@ -5,3 +5,4 @@
 0-DataPreparation/videos
 1-AdversarialDeepFakes
 2-FaceXray/shape_predictor_68_face_landmarks.dat
+2-FaceXray/HR-Net/hrnet_w32-36af842e.pth
