@@ -1,0 +1,27 @@
+
+1. Prepare datasets with real videos
+
+1.1 Baixar videos reais e gravar no S3 - 
+1.2 extrair frames
+1.3 Rodar DFace MTCNN para detectar as faces (https://github.com/kuaikuaikim/DFace)
+1.4 Extrair faces (crop) ?
+
+2. Extract faces from real videos with face-extractor *****not needed
+a. read video from s3  
+b. generate image - python3 face-extractor.py --input_video ddtbarpcgo.mp4 --output ../srcFaces --skip 10 --verbose 1
+
+Generate face Xray - BI Dataset
+
+1. input: source face image (I_B in paper, one image file or directory of images) and a directory of real face images as face database.
+2. search face database for the one whose landmarks are close to source face image.
+3. apply convex hull, random deform, piecewise affine transform, color correction and swap.
+4. save result in ./dump
+run  python3 faceBlending.py -sfp srcFaces -fd img_align_celeba -t 50
+
+- Train HR-net with BI dataset
+
+
+videos:
+
+183.mp4 Obama original
+183_253 Obama fake

@@ -1,0 +1,36 @@
+Development instructions
+Generator dataset.py
+=====================
+    - Face detector package xxDetector
+        Dlib
+    - Key point regression package xxRegressor
+        Dlib
+        HR
+            Global assignment of fixed type face frame
+    -Generate key point function class LMGenerator
+        Decouple the Detector/Regressor function from the Generator
+    - Fit functional class Blender
+        color_transfer: transfer based on mask
+        Random_Deform improvement: random zoom + downward jitter
+    - Discriminator
+
+Pre-trained model
+==================
+Baidu network disk link: https://pan.baidu.com/s/1N3NhdxzAWgHbfkcb25nUmA Extraction code: uvc8
+
+Training log
+============
+    4.20 Training
+        -Training set: data size 400*400, positive-negative data ratio=1:3
+            data: 15,000 mixed faces made based on the celeb data set + 5000 real data without repeated backgrounds and mixed faces
+            label: facexray image corresponding to data
+
+        -Validation set: data size 400*400, positive-negative data ratio ≈1:3
+            data: 5000 mixed faces based on celeb data set + 2000 real data without repeated backgrounds and mixed faces
+            label: facexray image corresponding to data
+        -Training related parameters and results: Baidu network disk link: https://pan.baidu.com/s/1gEs3uOP1faoimaySAhgjOw Extraction code: njis
+            Directory: .pth of epoch100, 200, 400, 500; log; tensorboard file
+        -There is a problem: the loss and acc curves behave normally, showing convergence around epoch20, but the test set cannot output the face contour image like facexray, but it is similar to the image showing that there are two kinds of noise
+        -Causes and solutions
+            Loss converges prematurely but did not learn what to learn: loss is too small? Increase the loss ratio-loss=loss*100
+
