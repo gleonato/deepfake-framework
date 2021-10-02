@@ -4,6 +4,7 @@
 2-FaceXray/shape_predictor_68_face_landmarks.dat
 2-FaceXray/HR-Net/hrnet_w32-36af842e.pth
 2-FaceXray/results
+2-FaceXray/ff-training-dataset-original
 
 0-CpData2S3
 0-DataPreparation/videos
