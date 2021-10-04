@@ -9,5 +9,6 @@
 
 0-CpData2S3
 0-DataPreparation/videos
-# 1-AdversarialDeepFakes
-# 1-AdversarialDeepFakes/tem*
+1-AdversarialDeepFakes
+1-AdversarialDeepFakes/tem*
+backup
