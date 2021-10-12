@@ -7,7 +7,7 @@ attacked_dir = '/home/leonato/Projects/deepfake-framework/1-AdversarialDeepFakes
 not_attacked_dir = '/home/leonato/Projects/deepfake-framework/0-DataPreparation/videos/manipulated_sequences/Deepfakes/raw/videos/'
 
 
-# image dimension TARGET
+# image dimension resize 
 dim = (1280,720)
 
 # # Extract frames from attacked videos

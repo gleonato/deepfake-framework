@@ -7,14 +7,14 @@ from torch import nn
 from torch import optim
 import torch.nn.functional as F
 from torchvision import datasets, transforms, models
-# from torch.utils.tensorboard import SummaryWriter
-# writer = SummaryWriter()
+from torch.utils.tensorboard import SummaryWriter
+writer = SummaryWriter()
 
 # Dataset
 data_dir = '/home/leonato/Projects/deepfake-framework/4-AttackDetectionNet/data/train'
 
 # Model parms
-epochs = 1
+epochs = 6
 batch_size = 64
 steps = 0
 running_loss = 0
@@ -39,7 +39,7 @@ def load_split_train_test(datadir, valid_size = .2):
     indices = list(range(num_train))
 
     split = int(np.floor(valid_size * num_train))
-    print(split)
+    # print(split)
 
     np.random.shuffle(indices)
     # print(indices)
@@ -93,6 +93,7 @@ for epoch in range(epochs):
         optimizer.zero_grad()
         logps = model.forward(inputs)
         loss = criterion(logps, labels)
+        writer.add_scalar("Loss/train", loss, epoch)
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
@@ -106,6 +107,7 @@ for epoch in range(epochs):
                     inputs, labels = inputs.to(device), labels.to(device)
                     logps = model.forward(inputs)
                     batch_loss = criterion(logps, labels)
+                    writer.add_scalar("Loss/train", batch_loss, epoch)
                     test_loss += batch_loss.item()
                     
                     ps = torch.exp(logps)
@@ -120,5 +122,6 @@ for epoch in range(epochs):
                   f"Test accuracy: {accuracy/len(testloader):.3f}")
             running_loss = 0
             model.train()
-
-torch.save(model, 'AttackNetModel.pth')
+            writer.flush()
+    torch.save(model, 'AttackNetModel.pth')
+# torch.save(model, 'AttackNetModel.pth')

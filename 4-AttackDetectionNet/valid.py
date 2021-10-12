@@ -13,7 +13,7 @@ data_dir = '/home/leonato/Projects/deepfake-framework/4-AttackDetectionNet/data/
 # classes = []
 # print(classes)
 
-test_transforms = transforms.Compose([transforms.Resize(224),
+test_transforms = transforms.Compose([transforms.Resize([704,704]),
                                       transforms.ToTensor(),
                                      ])
 
@@ -26,6 +26,7 @@ test_transforms = transforms.Compose([transforms.Resize(224),
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 model = torch.load('AttackNetModel.pth')
+# model = torch.load('oldmodels/AttackNetModel-704x704-1epoch.pth')
 model.eval()
 
 def predict_image(image):
@@ -58,7 +59,7 @@ def get_random_images(num):
 
 
 to_pil = transforms.ToPILImage()
-images, labels, classes, dataimgs, idx = get_random_images(100)
+images, labels, classes, dataimgs, idx = get_random_images(10)
 fig=plt.figure(figsize=(10,10))
 attacked = 0
 notattacked = 0
