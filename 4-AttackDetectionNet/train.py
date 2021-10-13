@@ -24,6 +24,7 @@ train_losses, test_losses = [], []
 
 # Carrega os datasets de treinamento 
 def load_split_train_test(datadir, valid_size = .2):
+# Transforma resize dos frames
     train_transforms = transforms.Compose([transforms.Resize([704,704]),
                                        transforms.ToTensor(),
                                        ])
@@ -35,7 +36,7 @@ def load_split_train_test(datadir, valid_size = .2):
     test_data = datasets.ImageFolder(datadir,
                     transform=test_transforms)
     num_train = len(train_data)
-    print(train_data[0][0].shape)
+    print('Input shape:' + train_data[0][0].shape)
     indices = list(range(num_train))
 
     split = int(np.floor(valid_size * num_train))
@@ -68,7 +69,6 @@ model = models.resnet50(pretrained=True)
 # print(model)
 
 #  freeze Resnet50 pre-trained layers, so we don’t backprop through them during training. 
-
 for param in model.parameters():
     param.requires_grad = False
 
@@ -84,8 +84,8 @@ optimizer = optim.Adam(model.fc.parameters(), lr=0.003)
 model.to(device)
 # print(model)
 
-# Train the model
 
+# Train the model
 for epoch in range(epochs):
     for inputs, labels in trainloader:
         steps += 1
