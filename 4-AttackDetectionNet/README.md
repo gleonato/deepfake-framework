@@ -53,3 +53,6 @@ qtde: 10 videos
 compressao: raw
 attack method: iterative_fgsm
 
+Footnotes:
+
+Tensorboard activation - https://pytorch.org/tutorials/recipes/recipes/tensorboard_with_pytorch.html#learn-more
