@@ -36,7 +36,7 @@ def load_split_train_test(datadir, valid_size = .2):
     test_data = datasets.ImageFolder(datadir,
                     transform=test_transforms)
     num_train = len(train_data)
-    print('Input shape:' + train_data[0][0].shape)
+    # print('Input shape:' + train_data[0][0].shape)
     indices = list(range(num_train))
 
     split = int(np.floor(valid_size * num_train))
@@ -123,5 +123,5 @@ for epoch in range(epochs):
             running_loss = 0
             model.train()
             writer.flush()
-    torch.save(model, 'AttackNetModel.pth')
+    torch.save(model, 'AttackNetModel.pth-{epoch}-{timestamp}')
 # torch.save(model, 'AttackNetModel.pth')

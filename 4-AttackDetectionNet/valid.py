@@ -59,7 +59,7 @@ def get_random_images(num):
 
 
 to_pil = transforms.ToPILImage()
-images, labels, classes, dataimgs, idx = get_random_images(10)
+images, labels, classes, dataimgs, idx = get_random_images(6)
 fig=plt.figure(figsize=(10,10))
 attacked = 0
 notattacked = 0
