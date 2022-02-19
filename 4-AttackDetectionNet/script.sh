@@ -1,4 +1,5 @@
 #!/bin/sh
+# conda init bash
 # conda activate attack
-python train.py
+python3 train.py
 echo timestamp
