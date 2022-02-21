@@ -1,0 +1,10 @@
+Adversarial DeepFakes setup instructions
+==========================================
+
+conda create env -n XXXX python=3.6 --file=requirement.txt
+
+conda install -c conda-forge opencv
+conda install -c conda-forge dlib
+conda install -c pytorch pytorch
+conda install -c conda-forge pretrainedmodels
+pip install torchgeometry
