@@ -4,6 +4,7 @@ Example usage:
     see -h or https://github.com/ondyari/FaceForensics
 
     Leonato note: cmd -> python faceforensics_download_v4.py ./videos -d all -c c23 -t videos  --num_videos 10
+    python faceforensics_download_v4.py ./videos -d all -c c23 -t videos  --num_videos 100
 
     FACE XRAY DATASET GENERATOR: python faceforensics_download_v4.py /home/leonato/Projects/deepfake-framework/2-FaceXray/ff-training-dataset-original -d original -c raw -t videos  --num_videos 1000
 """
