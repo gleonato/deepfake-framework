@@ -21,3 +21,5 @@ backup
 4-AttackDetectionNet/AttackNetModel*
 4-AttackDetectionNet/data
 4-AttackDetectionNet/runs
+
+.ipynb*
