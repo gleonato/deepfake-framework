@@ -12,6 +12,7 @@ writer = SummaryWriter()
 
 # Dataset
 data_dir = '/root/deepfake-framework/4-AttackDetectionNet/data/train'
+data_s3 = 's3://raw-videos-gleonato/AttackDetectionNet/data/train/'
 
 # image input
 frame_height=704
@@ -58,7 +59,7 @@ def load_split_train_test(datadir, valid_size = .2):
                    sampler=test_sampler, batch_size=batch_size)
     return trainloader, testloader
 
-trainloader, testloader = load_split_train_test(data_dir, .2)
+trainloader, testloader = load_split_train_test(data_s3, .2)
 print(trainloader.dataset.classes)
 # print(testloader.dataset)
 
